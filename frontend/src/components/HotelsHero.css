@@ -1,0 +1,21 @@
+.hotels-hero{
+    background-image: linear-gradient(rgba(0,0,0,0.7),
+    rgba(0,0,0,0.7)),url("../assets/hotel1.jpg");
+    background-size: cover;
+    background-position: center;
+    padding: 60px 40px;
+    text-align: center;
+}
+.hotels-hero-content{
+    color: #fff;
+}
+.hotels-hero-content>h1{
+    font-size: 45px;
+    margin-bottom: 15px;
+    line-height: 1.2;
+    font-family: "Playfair", serif;
+}
+.hotels-hero-content>p{
+    font-size: 20px;
+    margin-bottom: 20px;
+}

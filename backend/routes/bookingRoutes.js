@@ -1,0 +1,17 @@
+const { getUserBookings, getBookingDetails, checkAvailability, createBooking, cancelBooking, updateBooking, getHotelBookings } = require("../controllers/bookingControllers");
+const express = require("express");
+const authMiddleware = require("../middlewares/authMiddleware");
+const checkOwnerMiddleware = require("../middlewares/checkOwnerMiddleware");
+const { createRazorpayOrder, verifyRazorpayPayment, failRazorpayPayment } = require("../controllers/paymentController");
+const router = express.Router();
+router.post("/:id/razorpay-order", authMiddleware, createRazorpayOrder);
+router.post("/:id/razorpay-verify", authMiddleware, verifyRazorpayPayment);
+router.post("/:id/razorpay-failed", authMiddleware, failRazorpayPayment);
+router.get("/user/:userId", authMiddleware, getUserBookings);
+router.get("/:id", authMiddleware, getBookingDetails);
+router.post("/check-availability", authMiddleware, checkAvailability);
+router.post("/", authMiddleware, createBooking);
+router.put("/cancel/:id", authMiddleware, cancelBooking);
+router.put("/:id", authMiddleware, checkOwnerMiddleware, updateBooking);
+router.get("/hotel/:hotelId", authMiddleware, checkOwnerMiddleware, getHotelBookings);
+module.exports = router;

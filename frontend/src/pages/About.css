@@ -1,0 +1,139 @@
+.about-page {
+    min-height: calc(100vh - 64px);
+}
+
+.about-hero {
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    padding: 70px 20px;
+    text-align: center;
+    color: #fff;
+}
+
+.about-hero>h1 {
+    font-size: 40px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.about-hero>h1>span {
+    color: var(--accent);
+}
+
+.about-hero>p {
+    font-size: 18px;
+    color: #e0ecff;
+}
+
+.about-content {
+    padding: 50px var(--padding);
+}
+
+.about-story {
+    max-width: 800px;
+    margin: 0 auto 50px;
+    text-align: center;
+}
+
+.about-story>h2 {
+    font-size: 28px;
+    margin-bottom: 16px;
+    color: var(--heading-color);
+}
+
+.about-story>p {
+    font-size: 16px;
+    color: var(--para-color);
+    margin-bottom: 14px;
+    line-height: 1.8;
+}
+
+.about-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 24px;
+    margin-bottom: 50px;
+}
+
+.about-stat-card {
+    background-color: #fff;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    padding: 30px 20px;
+    text-align: center;
+    transition: var(--transition);
+}
+
+.about-stat-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-hover);
+}
+
+.about-stat-card>h2 {
+    font-size: 34px;
+    color: var(--primary);
+    margin-bottom: 6px;
+}
+
+.about-stat-card>p {
+    color: var(--gray);
+    font-size: 16px;
+}
+
+.about-features {
+    margin-bottom: 30px;
+}
+
+.about-features>h2 {
+    font-size: 28px;
+    text-align: center;
+    margin-bottom: 28px;
+    color: var(--heading-color);
+}
+
+.about-features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 24px;
+}
+
+.about-feature-card {
+    background-color: #fff;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    padding: 28px 22px;
+    text-align: center;
+    transition: var(--transition);
+}
+
+.about-feature-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-hover);
+}
+
+.feature-icon {
+    font-size: 40px;
+    display: block;
+    margin-bottom: 12px;
+}
+
+.about-feature-card>h3 {
+    font-size: 19px;
+    margin-bottom: 8px;
+    color: var(--heading-color);
+}
+
+.about-feature-card>p {
+    color: var(--para-color);
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+@media (width<=850px) {
+    .about-hero>h1 {
+        font-size: 30px;
+    }
+
+    .about-hero>p {
+        font-size: 15px;
+    }
+}

@@ -1,0 +1,121 @@
+.setup-hotel {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 280px 1fr;
+}
+
+.sidebar {
+    height: 100vh;
+    position: sticky;
+    top: 0px;
+    background-color: black;
+    color: #fff;
+    padding: 40px 20px;
+    padding-bottom: 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.sidebar-header>h1 {
+    margin-bottom: 70px;
+    font-size: 30px;
+}
+
+.sidebar-links {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.sidebar-link>a,
+.sidebar-link>div {
+    font-size: 20px;
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.sidebar-link>a:hover {
+    color: var(--primary);
+}
+
+.owner-details {
+    border-top: 1px solid var(--gray);
+    border-bottom: 1px solid var(--gray);
+    display: flex;
+    gap: 20px;
+    padding: 20px 0px;
+    font-size: 20px;
+    align-items: center;
+}
+
+.owner-image {
+    height: 40px;
+    width: 40px;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    background-color: #fff;
+}
+
+.owner-image>img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.setup-hotel>.content {
+    padding: 40px;
+}
+
+.mobile-sidebar-icon {
+    display: none;
+}
+
+.sidebar-close-btn {
+    display: none;
+}
+
+.sidebar-close {
+    display: flex;
+}
+
+@media (width<=1100px) {
+    .sidebar {
+        /* display: none; */
+        position: absolute;
+        top: 0px;
+        height: 100vh;
+        transition: var(--transition);
+    }
+
+    .sidebar-header>h1 {
+        font-size: 25px;
+    }
+
+    .sidebar-close-btn {
+        display: block;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 20px;
+    }
+
+    .setup-hotel {
+        display: block;
+        grid-template-columns: 1fr;
+    }
+
+    .mobile-sidebar-icon {
+        display: block;
+        position: absolute;
+        top: 10px;
+        cursor: pointer;
+        font-size: 30px;
+    }
+
+    .sidebar-close {
+        display: none;
+    }
+}

@@ -1,0 +1,161 @@
+Database Structure:
+Users Table
+User = {
+  id: "UUID",
+  email: "string",
+  password: "string",
+  first_name: "string",
+  last_name: "string",
+  phone: "string",
+  date_of_birth: "Date",
+  profile_picture_url: "string",
+  role: "string", // 'customer', 'admin', 'hotel_manager'
+
+  created_at: "Timestamp",
+  updated_at: "Timestamp"
+}
+
+Hotels Table
+Hotel = {
+  id: "UUID",
+  name: "string",
+  description: "string",
+  address: "string",
+  city: "string",
+  state: "string",
+  country: "string",
+  category:"string", //resort, luxury, cottage, 5-star, budget
+  star_rating: "number", // 1-5
+  images: "string[]", 
+  contact_email: "string",
+  contact_phone: "string",
+  check_in_time: "string",
+  check_out_time: "string",
+  price,
+
+  policies: "Object", // {cancellation:"string",pets:boolean}
+
+  created_by: "UUID", // References User.id
+  created_at: "Timestamp",
+  updated_at: "Timestamp"
+}
+
+Room  Table
+Room = {
+  id: "UUID",
+  hotel_id: "UUID", // references Hotel.id
+
+  name: "string", // Deluxe Room, Premium Suite
+  description: "string",
+  base_price: "number",
+  total_rooms: "number", // Total inventory count
+  capacity: "number",
+  size_sqft: "number",
+
+  bed_type: "Object", // {King: number, Queen: number, Twin: number}
+  image: "string",
+
+  created_at: "Timestamp",
+  updated_at: "Timestamp"
+}
+
+Bookings Table
+Booking = {
+  id: "UUID",
+  user_id: "UUID", //ref users table 
+  hotel_id: "UUID", //ref hotels table
+  room_id: "UUID", //ref rooms table
+
+  check_in_date: "Date",
+  check_out_date: "Date",
+  number_of_guests: "number",
+
+  total_amount: "number",
+  tax_amount: "number",
+  final_amount: "number",
+  status: "string", // booked, confirmed, cancelled, completed
+  payment_status: "string", // pending, success, failed, refunded
+  payment_method: "string", // upi, debit_card, credit_card, cash
+  transaction_id: "string",
+  card_details: "Object" // {holder_name:"string",card_number:"number",expiry_date:"date",cvv:"number"}
+  special_requests: "string",
+  cancellation_reason: "string",
+  cancelled_at: "Timestamp",
+  alternate_phone_number: "number" 
+  created_at: "Timestamp",
+  updated_at: "Timestamp"
+}
+
+Reviews Table
+Review = {
+  id: "UUID",
+  user_id: "UUID", // ref users table
+  hotel_id: "UUID", // ref hotels table
+  booking_id: "UUID", // ref bookings table
+  rating: "number", // 1-5
+  comment: "string",
+  created_at: "Timestamp",
+  updated_at: "Timestamp"
+}
+
+Routes:
+API Design
+Authentication Routes
+POST /api/auth/register
+POST /api/auth/login
+POST /api/auth/logout
+GET  /api/auth/me
+
+Hotel Routes
+GET    /api/hotels                    # Search hotels with filters
+GET    /api/hotel/:id               # Get hotel details
+POST   /api/hotel                   # Create hotel (only after login)
+PUT    /api/hotel/:id               # Update hotel (only after login)
+
+
+Room Routes
+POST /api/room                      # Creates new room
+PUT /api/room/:id 
+DELETE /api/room/:id 
+
+Booking Routes
+GET    /api/bookings/user/:userId                  # Get user's bookings
+GET    /api/bookings/:id             # Get booking details
+POST   /api/bookings/check-availability # Check room availability
+POST   /api/bookings                 # Create booking
+PUT    /api/bookings/:id/cancel      # Cancel booking
+PUT    /api/bookings/:id             # Update booking (owner only)
+GET /api/bookings/:hotelId
+
+Hotels Api Structure:
+**Query Parameters:**
+{
+  destination: "array",    // city
+  checkIn: "Date",         // YYYY-MM-DD
+  checkOut: "Date",        // YYYY-MM-DD
+  guests: "number",
+  minPrice: "number",
+  maxPrice: "number",
+  rating: "number",        // 1-5
+  page: "number",
+  limit: "number",
+  category: "array"
+}
+```
+
+**Success Response (200):**
+```javascript
+{
+  success: true,
+  data: [
+    {
+      hotel: { /* Hotel object */ },
+    }
+  ],
+  pagination: {
+    page: "number",
+    limit: "number",
+    total: "number",
+    totalPages: "number"
+  }
+}
